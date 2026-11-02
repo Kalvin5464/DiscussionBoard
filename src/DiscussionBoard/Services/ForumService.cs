@@ -24,4 +24,5 @@ public class ForumService
         return await _context.Forums
             .FirstOrDefaultAsync(f => f.Id == id && !f.IsDeleted);
     }
+
 }

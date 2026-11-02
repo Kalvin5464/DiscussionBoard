@@ -1,8 +1,24 @@
 @page "/Forums/Index"
 @model ForumsModel
-@{ ViewData["Title"] = "Forums"; }
+
+@{
+    ViewData["Title"] = "Forums";
+}
+
 <h1>Forums</h1>
-@foreach (var forum in Model.Items)
+
+<p>Forum count: @Model.Items.Count</p>
+
+@if (!Model.Items.Any())
 {
-    <partial name="/Pages/Forums/_ForumCard.cshtml" model="forum" />
+    <div class="alert alert-warning">
+        No forums found.
+    </div>
+}
+else
+{
+    @foreach (var forum in Model.Items)
+    {
+        <partial name="_ForumCard" model="forum" />
+    }
 }

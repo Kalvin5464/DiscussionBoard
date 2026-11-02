@@ -50,7 +50,10 @@ namespace DiscussionBoard
             builder.Services.AddSingleton<ILogReader, JsonLogReader>();
 
             var app = builder.Build();
-
+            if (app.Environment.IsDevelopment())
+            {
+                DevelopmentSeedService.SeedAsync(app.Services).GetAwaiter().GetResult();
+            }
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
