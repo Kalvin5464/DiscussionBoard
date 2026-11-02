@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DiscussionBoard.Data.Migrations
+namespace DiscussionBoard.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20261101185154_CreateForumThreadPost")]
-    partial class CreateForumThreadPost
+    [Migration("20261102032240_InitialDiscussionBoardEntities")]
+    partial class InitialDiscussionBoardEntities
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

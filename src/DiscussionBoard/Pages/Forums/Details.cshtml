@@ -1,0 +1,24 @@
+﻿@page "/Forum/{id:int}"
+@model DiscussionBoard.Pages.Forums.DetailsModel
+
+<h1>@Model.Forum?.Name</h1>
+<p>@Model.Forum?.Description</p>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <a asp-page="/Discussions/Create" asp-route-forumId="@Model.Forum?.Id" class="btn btn-primary mb-3">Start a new discussion</a>
+}
+
+@if (Model.Threads.Count == 0)
+{
+    <p>No discussion threads yet in this forum.</p>
+}
+else
+{
+    @foreach (var thread in Model.Threads)
+    {
+        <partial name="_ThreadCard" model="thread" />
+    }
+}
+
+<a asp-page="/Forums/Index">Return to Forums</a>

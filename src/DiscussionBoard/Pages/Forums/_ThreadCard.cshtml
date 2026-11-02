@@ -1,0 +1,7 @@
+﻿@model DiscussionBoard.Models.DiscussionThread
+
+<article class="border rounded p-3 mb-3" aria-label="Discussion thread">
+    <h2 class="h5"><a asp-page="/Discussions/Details" asp-route-threadId="@Model.Id">@Model.Title</a></h2>
+    <p class="mb-1">@Model.Content</p>
+    <small class="text-muted">@Model.ApplicationUser?.UserName — @Model.CreatedAt.ToLocalTime().ToString("g")</small>
+</article>

@@ -12,6 +12,7 @@ namespace DiscussionBoard
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Get the location of the Logs folder for SeriLog
@@ -33,6 +34,12 @@ namespace DiscussionBoard
                 options.UseSqlite(connectionString));
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+            builder.Services.AddScoped<DiscussionThreadService>();
+
+            builder.Services.AddScoped<PostService>();
+
+            builder.Services.AddScoped<ForumService>();
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
                     options.SignIn.RequireConfirmedAccount = !builder.Environment.IsDevelopment())

@@ -19,4 +19,9 @@ public class ForumService
             .Where(f => !f.IsDeleted)
             .ToListAsync();
     }
+    public async Task<Forum?> GetAsync(int id)
+    {
+        return await _context.Forums
+            .FirstOrDefaultAsync(f => f.Id == id && !f.IsDeleted);
+    }
 }

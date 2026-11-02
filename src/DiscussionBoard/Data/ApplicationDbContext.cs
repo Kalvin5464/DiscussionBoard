@@ -34,6 +34,7 @@ namespace DiscussionBoard.Data
 
             builder.Entity<DiscussionThread>()
                 .HasOne(t => t.ApplicationUser)
+
                 .WithMany(u => u.DiscussionThreads)
                 .HasForeignKey(t => t.ApplicationUserId)
                 .OnDelete(DeleteBehavior.Restrict);
